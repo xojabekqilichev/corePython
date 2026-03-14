@@ -1,85 +1,186 @@
 <!DOCTYPE html>
 <html lang="uz">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PYTHON CORE | Xo'jabek Qilichev</title>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Poppins:wght@300;600&display=swap"
+        rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         :root {
-            --primary: #3776ab; /* Python Blue */
-            --secondary: #ffd43b; /* Python Yellow */
+            --primary: #3776ab;
+            --secondary: #ffd43b;
             --dark: #0d1117;
-            --accent: #2ea043; /* Green for success/CLI */
+            --accent: #2ea043;
+            --card-bg: #1c2128;
         }
 
         body {
             margin: 0;
             padding: 0;
             font-family: 'Poppins', sans-serif;
-            background-color: var(--dark);
+            background: linear-gradient(rgba(13, 17, 23, 0.85), rgba(13, 17, 23, 0.85)),
+                url('https://tse1.mm.bing.net/th/id/OIP.9MSB4v-1a9gnr9kDJek6ewHaE8?w=1200&h=800&rs=1&pid=ImgDetMain&o=7&rm=3');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             color: white;
             scroll-behavior: smooth;
             overflow-x: hidden;
         }
 
-        /* Navigatsiya */
-        nav {
+        #hero {
+            background: transparent !important;
+        }
+
+nav {
             position: fixed;
-            top: 0; width: 100%;
-            background: rgba(13, 17, 23, 0.9);
-            backdrop-filter: blur(10px);
+            top: 0;
+            width: 100%;
+            background: rgba(13, 17, 23, 0.75); /* Shaffof fon */
+            backdrop-filter: blur(15px); /* Shisha effekti */
             z-index: 1000;
-            padding: 15px 0;
+            padding: 20px 0;
             text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Ingichka chegara */
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5); /* Pastki soya */
         }
 
         nav a {
-            color: white;
+            color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
             margin: 0 20px;
             font-weight: 600;
-            transition: 0.3s;
+            font-size: 0.9rem;
+            text-transform: uppercase; /* Katta harflar */
+            letter-spacing: 1.5px; /* Harflar orasidagi masofa */
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 8px 0;
         }
 
-        nav a:hover { color: var(--secondary); }
+        /* Sichqoncha borganda yozuv rangi */
+        nav a:hover {
+            color: var(--secondary);
+            text-shadow: 0 0 10px rgba(255, 212, 59, 0.4);
+        }
 
-        /* Umumiy Sectionlar */
+        /* Pastdagi chiziqcha animatsiyasi */
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--secondary);
+            transition: width 0.3s ease;
+            box-shadow: 0 0 8px var(--secondary); /* Chiziqcha ham porlaydi */
+        }
+
+        nav a:hover::after {
+            width: 100%; /* Chiziqcha yoyiladi */
+        }
+
         section {
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 80px 20px;
             text-align: center;
         }
 
-        /* 1-SAHIFA: HERO */
         #hero {
             background: radial-gradient(circle at center, #1e293b 0%, #0d1117 100%);
         }
 
         .python-logo {
-            width: 120px;
+            width: 100px;
             margin-bottom: 20px;
             filter: drop-shadow(0 0 15px var(--primary));
         }
 
-        h1 { font-size: 3.5rem; margin: 0; color: var(--secondary); }
-        .subtitle { font-family: 'JetBrains Mono', monospace; color: var(--accent); }
+        h1 {
+            font-size: 3rem;
+            margin: 0;
+            color: var(--secondary);
+        }
 
-        /* 2-SAHIFA: REGISTRATSIYA */
-        #registration { background: #161b22; }
-        
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 40px;
+            color: white;
+        }
+
+        .subtitle {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--accent);
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1100px;
+            width: 100%;
+        }
+
+        .guide-card {
+            background: rgba(28, 33, 40, 0.7) !important;
+            border: 1.5px solid #30363d;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: left;
+            transition: 0.3s;
+            backdrop-filter: blur(2px);
+        }
+
+        .guide-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .step {
+            margin-bottom: 15px;
+            border-left: 3px solid var(--secondary);
+            padding-left: 15px;
+        }
+
+        .step span {
+            color: var(--secondary);
+            font-weight: bold;
+        }
+
+        /* Jadval stili */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #30363d;
+            text-align: left;
+        }
+
+        th {
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
         .btn-tg {
             background-color: #0088cc;
             color: white;
-            padding: 20px 40px;
+            padding: 18px 35px;
             border-radius: 50px;
             text-decoration: none;
-            font-size: 1.2rem;
             font-weight: bold;
             display: inline-flex;
             align-items: center;
@@ -89,113 +190,178 @@
         }
 
         .btn-tg:hover {
-            transform: scale(1.1);
+            transform: scale(1.05);
             box-shadow: 0 15px 30px rgba(0, 136, 204, 0.5);
         }
 
-        /* 3-SAHIFA: YO'RIQNOMA */
-        #guide { background: var(--dark); }
+        @keyframes blink {
 
-        .guide-card {
-            background: #1c2128;
-            border: 1px solid #30363d;
-            padding: 30px;
-            border-radius: 15px;
-            max-width: 600px;
-            text-align: left;
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.3;
+            }
         }
 
-        .step { margin-bottom: 20px; border-left: 3px solid var(--secondary); padding-left: 15px; }
-        .step span { color: var(--secondary); font-weight: bold; }
+        .blink-dot {
+            height: 10px;
+            width: 10px;
+            background-color: #ff4b2b;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 5px;
+            animation: blink 1s infinite;
+        }
 
         footer {
-            padding: 50px 0;
-            background: #0d1117;
+            padding: 45px 0;
+            background: black;
             border-top: 1px solid #30363d;
             font-size: 0.8rem;
             color: #8b949e;
         }
 
-        /* CLI Style Text */
-        .cli {
-            background: black;
-            padding: 10px;
-            border-radius: 5px;
-            font-family: 'JetBrains Mono', monospace;
-            color: #2ea043;
-            font-size: 0.9rem;
-        }
-        @keyframes blink {
-            0% { opacity: 1; }
-            50% { opacity: 0.3; }
-            100% { opacity: 1; }
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            nav a {
+                margin: 0 7px;
+                font-size: 0.8rem;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <nav>
-        <a href="#hero">Kurs haqida</a>
-        <a href="#registration">Registratsiya</a>
+        <a href="#hero">Kurs</a>
+        <a href="#features">Imkoniyatlar</a>
+        <a href="#schedule">Jadval</a>
         <a href="#guide">Yo'riqnoma</a>
+        <a href="#registration">To'lov</a>
     </nav>
 
     <section id="hero">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Python" class="python-logo" data-aos="zoom-in">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Python"
+            class="python-logo" data-aos="zoom-in">
         <h1 data-aos="fade-up">PYTHON CORE</h1>
-        <p class="subtitle" data-aos="fade-up" data-aos-delay="200">> 0 dan boshlovchilar uchun real tajriba</p>
-        <p style="max-width: 600px; line-height: 1.6;" data-aos="fade-up" data-aos-delay="400">
-            <b>Python dasturlash tilini o'rganmoqchi bo'lganlar uchun ekklyuziv kurs. Python asoslari, ma'lumotlar bazasi va telegram botlar bilan ishlashni birgalikda o'rganamiz.</b>
+        <p class="subtitle" data-aos="fade-up" data-aos-delay="200">> Real tajriba va sifatli ta'lim</p>
+        <p style="max-width: 600px; line-height: 1.6; color: #8b949e;" data-aos="fade-up" data-aos-delay="300">
+            Python asoslari, SQL ma'lumotlar bazasi va Telegram botlar yaratishni 0 dan professional darajagacha
+            o'rganing.
         </p>
-        <p style="color: #ff4b2b; font-weight: bold;">
-    <span style="height: 10px; width: 10px; background-color: #ff4b2b; border-radius: 50%; display: inline-block; margin-right: 5px; animation: blink 1s infinite;"></span>
-    Faqat 20 ta o'quvchi qabul qilinadi.
-</p>
+        <div style="margin-top: 20px; font-weight: bold; color: #ff4b2b;" data-aos="fade-up" data-aos-delay="400">
+            <span class="blink-dot"></span> Faqat 20 ta o'quvchi qabul qilinadi.
+        </div>
+    </section>
+
+    <section id="features" style="background: #161b22;">
+        <h2 data-aos="fade-up">Imkoniyat va Talablar</h2>
+        <div class="grid-container">
+            <div class="guide-card" data-aos="fade-right"><img src="https://tse4.mm.bing.net/th/id/OIP.beAJTcvDHKPfg1EO1hrUJgHaEv?rs=1&pid=ImgDetMain&o=7&rm=3"
+                style="width: 100%; border-radius: 10px; margin-bottom: 15px;" alt="Natija">
+                <h3 style="color: var(--secondary);">Natija<span>🎯</span></h3>
+                <ul>
+                    <li>Python asoslarini mukammal egallash <span>✔️</span></li>
+                    <li>Murakkab Telegram botlar tuzish <span>✔️</span></li>
+                    <li>Ma'lumotlar bazasi bilan ishlash <span>✔️</span></li>
+                    <li>Haqiqiy loyihalar to'plami (Portfolio) <span>✔️</span></li>
+                </ul>
+            </div>
+            <div class="guide-card" data-aos="fade-left">
+                <img src="https://th.bing.com/th/id/OIP.K5gcQGu-8JUcPuNTiV9AEgHaEJ?o=7&rm=3&rs=1&pid=ImgDetMain"
+                    style="width: 100%; border-radius: 10px; margin-bottom: 15px;" alt="Laptop">
+                
+                <h3 style="color: var(--primary);">💻 Noutbuk talabi</h3>
+                <ul style="padding-left: 20px; line-height: 2;">
+                    <li>RAM: Kamida 8 GB</li>
+                    <li>ROM: 256-512 GB </li>
+                    <li>Protsessor: Core i5 (10-avlod +)</li>
+                    <li>Tizim: Windows 10 - 11, MacOS yoki Linux</li>
+                    <li>Dasturlar: Ixtiyoriy Code editorlar (darsda o'rgatiladi)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="schedule">
+        <h2 data-aos="fade-up">Dars Jadvali</h2>
+        <div class="guide-card" style="width: 100%; max-width: 800px; overflow-x: auto;" data-aos="zoom-in">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Kunlar</th>
+                        <th>Vaqt</th>
+                        <th>Format</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Seshanba</td>
+                        <td>11:00 - 12:30</td>
+                        <td>Jonli (Online)</td>
+                    </tr>
+                    <tr>
+                        <td>Payshanba</td>
+                        <td>11:00 - 12:30</td>
+                        <td>Jonli (Online)</td>
+                    </tr>
+                    <tr>
+                        <td>Shanba</td>
+                        <td>11:00 - 12:30</td>
+                        <td>Jonli (Online)</td>
+                    </tr><tr>
+                        <td>Yakshanba</td>
+                        <td>Belgilangan tasodifiy muddat</td>
+                        <td>Haftalik imtihon</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="guide" style="background: rgba(28, 33, 40, 0.7) !important; 
+            backdrop-filter: blur(11px);">
+        <h2 data-aos="fade-down">Foydalanish yo'riqnomasi</h2>
+        <div class="guide-card" style="max-width: 700px;" data-aos="fade-up">
+            <div class="step"><span>01.</span> To'lovni amalga oshirgach, botga chekni fayl shaklida .pdf formatida
+                yuboring, aks holda to'lov qabul qilinmaydi.</div>
+            <div class="step"><span>02.</span> Bir martalik havola orqali kurs kanaliga qo'shiling.</div>
+            <div class="step"><span>03.</span> Darslar jonli efirda o'tiladi va yozib olinadi.</div>
+            <div class="step"><span>04.</span> Vazifalarni belgilangan tartibda o'z vaqtida topshiring.</div>
+            <div class="step"><span>05.</span> Har hafta o'zlashtirishni tekshirish uchun imtihon topshirasiz.</div>
+        </div>
     </section>
 
     <section id="registration">
-        <h2 data-aos="fade-right">Kursga qo'shiling</h2>
-        <p data-aos="fade-left">To'lovdan so'ng, kurs havolasini oling</p>
+        <h2 data-aos="fade-up">Kursga qo'shiling</h2>
+        <div style="margin-top: 20px; font-weight: bold; color: #ff4b2b;" data-aos="fade-up" data-aos-delay="400">
+            <span class="blink-dot"></span> Hoziroq ro'yxatdan o'ting va o'z joyingizni tez band qiling, joylar soni
+            chegaralangan.
+        </div>
         <div style="margin-top: 30px;" data-aos="flip-up">
             <a href="https://t.me/anonytokenbot" class="btn-tg" target="_blank">
                 <span>📩</span> Telegram orqali yozish
             </a>
         </div>
-        <p style="margin-top: 20px; font-size: 0.9rem; color: #8b949e;">Kurs narxi: 150,000 so'm (Bir martalik)</p>
-    </section>
-
-    <section id="guide">
-        <h2 data-aos="fade-down">Foydalanish yo'riqnomasi</h2>
-        <div class="guide-card" data-aos="fade-up">
-            <div class="step">
-                <span>01.</span> To'lovni amalga oshirgach Telegram botimizga o'tib chekni yuboring(chek fayl shaklida jo'natilshi shart, aks holda qabul qilinmaydi).
-            </div>
-            <div class="step">
-                <span>02.</span> Bir martalik kurs havolasini olib, bot orqali kanal bilan tanishib chiqing, chunki kanalning o'ziga yarasha tartib qoidalari bor. Birgina xatolik tufayli muammo yuzaga kelmasin.
-            </div>
-            <div class="step">
-                <span>03.</span> Darslar <b>Jonli dars</b> rejimida sinxron tarzda o'tkaziladi. Har bir dars yozib olinib qulaylik uchun guruhga tashlanadi.
-            </div>
-            <div class="step">
-                <span>04.</span> Vazifalarni faqatgina belgilangan <a href="https://ymol.ru/uz/nastrojjka/chto-pokazyvaet-rasshirenie-v-imeni-faila-rasshirenie-imeni-faila/" target="_blank">fayl qisqartmasi</a> nomi bilan jo'natasiz.
-            </div>
-            <div class="step">
-                <span>05.</span> Har hafta imtihon olinadi.
-            </div>
-        </div>
+        <p style="margin-top: 20px; color: #8b949e;">Narxi: 150,000 so'm (Bir martalik)</p>
     </section>
 
     <footer>
-        <p>&copy; 2026 PYTHON CORE. Mentor: Xo'jabek Qilichev</p>
-        
+        <p>&copy;  2024 PYTHON CORE. Mentor: Xo'jabek Qilichev</p>
+        <p>Barcha huquqlar himoyalangan.</p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({
-            duration: 1000,
-            once: true
-        });
+        AOS.init({ duration: 1000, once: true });
     </script>
 </body>
+
 </html>
