@@ -419,39 +419,38 @@
         <p>Barcha huquqlar himoyalangan.</p>
     </footer>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <!-- <script>
-    AOS.init({ 
-        duration: 1000, 
-        once: false,      // Animatsiya takrorlanishi uchun
-        mirror: true,     // Tepaga chiqqanda ham elementlar yo'qolib, qayta paydo bo'lishi uchun
-        anchorPlacement: 'top-bottom' // Element qachon ko'rinishini aniqroq boshqarish uchun
-    });
-
-    // Skript yuklangandan keyin AOSni yangilab qo'yish (Refresh)
-    window.addEventListener("load", function () {
-        const loader = document.getElementById("loader");
-        setTimeout(() => {
-            loader.classList.add("loader-hidden");
-            AOS.refresh(); // Animatsiyalarni qayta hisoblab chiqish
-        }, 500);
-    });
-</script> -->
     <script>
+    // AOSni asosiy sozlamalar bilan ishga tushiramiz
     AOS.init({
         duration: 1000,
-        once: false,   // Har doim ishlashi uchun
-        mirror: true,  // Sahifani tepaga aylantirganda ham animatsiya bo'lishi uchun (SIZGA KERAGI SHU)
-        offset: 120,    // Element ekranga qancha kirganda animatsiya boshlanishi
-        anchorPlacement: 'top-bottom' // Animatsiya trigger bo'ladigan nuqtani aniqlashtirish
+        once: false,
+        mirror: true
     });
 
-    // Sahifa yuklanganda AOSni yangilash
+    // Tepaga scroll bo'lganda animatsiyani "reset" qilish (qayta yuklash)
+    let lastScrollTop = 0;
+    window.addEventListener("scroll", function() {
+        let st = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (st < lastScrollTop) {
+            // Agar tepaga scroll bo'layotgan bo'lsa
+            const aosElements = document.querySelectorAll('.aos-animate');
+            aosElements.forEach(el => {
+                // Element ekrandan chiqib ketsa, klassni olib tashlaymiz
+                const rect = el.getBoundingClientRect();
+                if (rect.top > window.innerHeight || rect.bottom < 0) {
+                    el.classList.remove('aos-animate');
+                }
+            });
+        }
+        lastScrollTop = st <= 0 ? 0 : st;
+    }, false);
+
+    // Loader uchun kod
     window.addEventListener("load", function () {
         const loader = document.getElementById("loader");
         setTimeout(() => {
             loader.classList.add("loader-hidden");
-            AOS.refresh();
         }, 500);
     });
 </script>
