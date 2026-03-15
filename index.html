@@ -420,7 +420,7 @@
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
+    <!-- <script>
     AOS.init({ 
         duration: 1000, 
         once: false,      // Animatsiya takrorlanishi uchun
@@ -434,6 +434,24 @@
         setTimeout(() => {
             loader.classList.add("loader-hidden");
             AOS.refresh(); // Animatsiyalarni qayta hisoblab chiqish
+        }, 500);
+    });
+</script> -->
+    <script>
+    AOS.init({
+        duration: 1000,
+        once: false,   // Har doim ishlashi uchun
+        mirror: true,  // Sahifani tepaga aylantirganda ham animatsiya bo'lishi uchun (SIZGA KERAGI SHU)
+        offset: 120,    // Element ekranga qancha kirganda animatsiya boshlanishi
+        anchorPlacement: 'top-bottom' // Animatsiya trigger bo'ladigan nuqtani aniqlashtirish
+    });
+
+    // Sahifa yuklanganda AOSni yangilash
+    window.addEventListener("load", function () {
+        const loader = document.getElementById("loader");
+        setTimeout(() => {
+            loader.classList.add("loader-hidden");
+            AOS.refresh();
         }, 500);
     });
 </script>
