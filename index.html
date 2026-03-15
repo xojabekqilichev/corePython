@@ -392,23 +392,14 @@
         once: false,
         mirror: true
     });
+<script>
+    // AOS-ni standart sozlamalar bilan ishga tushiramiz
+    AOS.init({ 
+        duration: 1000, 
+        once: true 
+    });
 
-    let lastScrollTop = 0;
-    window.addEventListener("scroll", function() {
-        let st = window.pageYOffset || document.documentElement.scrollTop;
-        
-        if (st < lastScrollTop) {
-            const aosElements = document.querySelectorAll('.aos-animate');
-            aosElements.forEach(el => {
-                const rect = el.getBoundingClientRect();
-                if (rect.top > window.innerHeight || rect.bottom < 0) {
-                    el.classList.remove('aos-animate');
-                }
-            });
-        }
-        lastScrollTop = st <= 0 ? 0 : st;
-    }, false);
-        
+    // Faqat loader uchun kod qoladi
     window.addEventListener("load", function () {
         const loader = document.getElementById("loader");
         setTimeout(() => {
