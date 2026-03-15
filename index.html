@@ -421,15 +421,22 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1000, once: false, mirror: true});
-        window.addEventListener("load", function () {
-                const loader = document.getElementById("loader");
-                // Sayt to'liq yuklangandan keyin 500ms kutib loaderni yashiradi
-                setTimeout(() => {
-                    loader.classList.add("loader-hidden");
-                }, 500);
-            });
-    </script>
+    AOS.init({ 
+        duration: 1000, 
+        once: false,      // Animatsiya takrorlanishi uchun
+        mirror: true,     // Tepaga chiqqanda ham elementlar yo'qolib, qayta paydo bo'lishi uchun
+        anchorPlacement: 'top-bottom' // Element qachon ko'rinishini aniqroq boshqarish uchun
+    });
+
+    // Skript yuklangandan keyin AOSni yangilab qo'yish (Refresh)
+    window.addEventListener("load", function () {
+        const loader = document.getElementById("loader");
+        setTimeout(() => {
+            loader.classList.add("loader-hidden");
+            AOS.refresh(); // Animatsiyalarni qayta hisoblab chiqish
+        }, 500);
+    });
+</script>
 </body>
 
 </html>
