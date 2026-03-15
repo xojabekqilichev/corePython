@@ -41,12 +41,16 @@
             top: 0;
             width: 100%;
             background: rgba(13, 17, 23, 0.75);
+            /* Shaffof fon */
             backdrop-filter: blur(15px);
+            /* Shisha effekti */
             z-index: 1000;
             padding: 20px 0;
             text-align: center;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            /* Ingichka chegara */
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            /* Pastki soya */
         }
 
         nav a {
@@ -56,17 +60,21 @@
             font-weight: 600;
             font-size: 0.9rem;
             text-transform: uppercase;
+            /* Katta harflar */
             letter-spacing: 1.5px;
+            /* Harflar orasidagi masofa */
             transition: all 0.3s ease;
             position: relative;
             padding: 8px 0;
         }
 
+        /* Sichqoncha borganda yozuv rangi */
         nav a:hover {
             color: var(--secondary);
             text-shadow: 0 0 10px rgba(255, 212, 59, 0.4);
         }
 
+        /* Pastdagi chiziqcha animatsiyasi */
         nav a::after {
             content: '';
             position: absolute;
@@ -77,10 +85,12 @@
             background-color: var(--secondary);
             transition: width 0.3s ease;
             box-shadow: 0 0 8px var(--secondary);
+            /* Chiziqcha ham porlaydi */
         }
 
         nav a:hover::after {
             width: 100%;
+            /* Chiziqcha yoyiladi */
         }
 
         section {
@@ -233,6 +243,7 @@
             }
         }
 
+        /* Loader uchun asosiy fon */
         #loader {
             position: fixed;
             width: 100%;
@@ -246,6 +257,7 @@
             transition: opacity 0.5s ease;
         }
 
+        /* Aylana animatsiyasi */
         .spinner {
             width: 50px;
             height: 50px;
@@ -254,6 +266,28 @@
             border-radius: 50%;
             animation: spin 1s linear infinite;
             margin-bottom: 20px;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        #loader p {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--secondary);
+            letter-spacing: 2px;
+        }
+
+        /* Sayt yuklangandan keyin loader yashirilishi uchun klass */
+        .loader-hidden {
+            opacity: 0;
+            pointer-events: none;
         }
     </style>
 </head>
@@ -379,34 +413,26 @@
         </div>
         <p style="margin-top: 20px; color: #8b949e;">Narxi: 150,000 so'm (Bir martalik)</p>
     </section>
-   
 
     <footer>
         <p>&copy; 2024 PYTHON CORE. Mentor: Xo'jabek Qilichev</p>
         <p>Barcha huquqlar himoyalangan.</p>
     </footer>
 
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-    AOS.init({
-        duration: 1000,
-        once: false,
-        mirror: true
-    });
-<script>
-    // AOS-ni standart sozlamalar bilan ishga tushiramiz
-    AOS.init({ 
-        duration: 1000, 
-        once: true 
-    });
-
-    // Faqat loader uchun kod qoladi
-    window.addEventListener("load", function () {
-        const loader = document.getElementById("loader");
-        setTimeout(() => {
-            loader.classList.add("loader-hidden");
-        }, 500);
-    });
-</script>
+        AOS.init({ duration: 1000, once: true });
+        window.addEventListener("load", function () {
+                const loader = document.getElementById("loader");
+                // Sayt to'liq yuklangandan keyin 500ms kutib loaderni yashiradi
+                setTimeout(() => {
+                    loader.classList.add("loader-hidden");
+                }, 500);
+            });
+    </script>
 </body>
 
 </html>
+
+
+Saytni tahlil qil u qanaqa saytligini aniqlab ber. Va tahlil qil
