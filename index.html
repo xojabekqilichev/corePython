@@ -255,117 +255,6 @@
             animation: spin 1s linear infinite;
             margin-bottom: 20px;
         }
-
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        #loader p {
-            font-family: 'JetBrains Mono', monospace;
-            color: var(--secondary);
-            letter-spacing: 2px;
-        }
-
-        .loader-hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-        
-        .orbital-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none; 
-            z-index: 0; 
-            overflow: hidden; 
-        }
-        
-        .orbit {
-            position: absolute;
-            border-radius: 50%;
-            animation: rotateOrbit linear infinite;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.05); 
-        }
-
-        .dot {
-            position: absolute;
-            width: 15px;
-            height: 15px; 
-            border-radius: 50%;
-            filter: blur(1px); 
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.7); 
-        }
-
-        .orbit-1 {
-            width: calc(100% + 200px);
-            height: calc(100% + 200px); 
-            top: -100px;
-            left: -100px;
-            border: 1px dashed var(--primary); 
-            animation-duration: 40s; 
-        }
-
-        .orbit-1 .dot-1 {
-            background-color: var(--primary);
-            top: 0; 
-            left: 50%;
-            transform: translateX(-50%);
-            box-shadow: 0 0 20px var(--primary);
-        }
-
-        .orbit-2 {
-            width: calc(100% + 100px);
-            height: calc(100% + 100px);
-            top: -50px;
-            left: -50px;
-            border: 1px dashed var(--accent); 
-            animation-duration: 30s; 
-            animation-direction: reverse;
-        }
-
-        .orbit-2 .dot-2 {
-            background-color: var(--accent); 
-            bottom: 0; 
-            left: 50%;
-            transform: translateX(-50%);
-            box-shadow: 0 0 20px var(--accent);
-        }
-
-        @keyframes rotateOrbit {
-            from {
-                transform: rotate(0deg);
-            }
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .orbit-1 {
-                width: calc(100% + 100px);
-                height: calc(100% + 100px);
-                top: -50px;
-                left: -50px;
-            }
-            .orbit-2 {
-                width: calc(100% + 50px);
-                height: calc(100% + 50px);
-                top: -25px;
-                left: -25px;
-            }
-            .dot {
-                width: 10px;
-                height: 10px;
-            }
-        }
     </style>
 </head>
 
@@ -490,14 +379,7 @@
         </div>
         <p style="margin-top: 20px; color: #8b949e;">Narxi: 150,000 so'm (Bir martalik)</p>
     </section>
-    <div class="orbital-container">
-        <div class="orbit orbit-1">
-            <div class="dot dot-1"></div>
-        </div>
-        <div class="orbit orbit-2">
-            <div class="dot dot-2"></div>
-        </div>
-    </div>
+   
 
     <footer>
         <p>&copy; 2024 PYTHON CORE. Mentor: Xo'jabek Qilichev</p>
