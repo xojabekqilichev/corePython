@@ -41,16 +41,12 @@
             top: 0;
             width: 100%;
             background: rgba(13, 17, 23, 0.75);
-            /* Shaffof fon */
             backdrop-filter: blur(15px);
-            /* Shisha effekti */
             z-index: 1000;
             padding: 20px 0;
             text-align: center;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            /* Ingichka chegara */
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-            /* Pastki soya */
         }
 
         nav a {
@@ -60,21 +56,17 @@
             font-weight: 600;
             font-size: 0.9rem;
             text-transform: uppercase;
-            /* Katta harflar */
             letter-spacing: 1.5px;
-            /* Harflar orasidagi masofa */
             transition: all 0.3s ease;
             position: relative;
             padding: 8px 0;
         }
 
-        /* Sichqoncha borganda yozuv rangi */
         nav a:hover {
             color: var(--secondary);
             text-shadow: 0 0 10px rgba(255, 212, 59, 0.4);
         }
 
-        /* Pastdagi chiziqcha animatsiyasi */
         nav a::after {
             content: '';
             position: absolute;
@@ -85,12 +77,10 @@
             background-color: var(--secondary);
             transition: width 0.3s ease;
             box-shadow: 0 0 8px var(--secondary);
-            /* Chiziqcha ham porlaydi */
         }
 
         nav a:hover::after {
             width: 100%;
-            /* Chiziqcha yoyiladi */
         }
 
         section {
@@ -243,7 +233,6 @@
             }
         }
 
-        /* Loader uchun asosiy fon */
         #loader {
             position: fixed;
             width: 100%;
@@ -257,7 +246,6 @@
             transition: opacity 0.5s ease;
         }
 
-        /* Aylana animatsiyasi */
         .spinner {
             width: 50px;
             height: 50px;
@@ -284,10 +272,99 @@
             letter-spacing: 2px;
         }
 
-        /* Sayt yuklangandan keyin loader yashirilishi uchun klass */
         .loader-hidden {
             opacity: 0;
             pointer-events: none;
+        }
+        
+        .orbital-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; 
+            z-index: 0; 
+            overflow: hidden; 
+        }
+        
+        .orbit {
+            position: absolute;
+            border-radius: 50%;
+            animation: rotateOrbit linear infinite;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.05); 
+        }
+
+        .dot {
+            position: absolute;
+            width: 15px;
+            height: 15px; 
+            border-radius: 50%;
+            filter: blur(1px); 
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.7); 
+        }
+
+        .orbit-1 {
+            width: calc(100% + 200px);
+            height: calc(100% + 200px); 
+            top: -100px;
+            left: -100px;
+            border: 1px dashed var(--primary); 
+            animation-duration: 40s; 
+        }
+
+        .orbit-1 .dot-1 {
+            background-color: var(--primary);
+            top: 0; 
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 20px var(--primary);
+        }
+
+        .orbit-2 {
+            width: calc(100% + 100px);
+            height: calc(100% + 100px);
+            top: -50px;
+            left: -50px;
+            border: 1px dashed var(--accent); 
+            animation-duration: 30s; 
+            animation-direction: reverse;
+        }
+
+        .orbit-2 .dot-2 {
+            background-color: var(--accent); 
+            bottom: 0; 
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 20px var(--accent);
+        }
+
+        @keyframes rotateOrbit {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .orbit-1 {
+                width: calc(100% + 100px);
+                height: calc(100% + 100px);
+                top: -50px;
+                left: -50px;
+            }
+            .orbit-2 {
+                width: calc(100% + 50px);
+                height: calc(100% + 50px);
+                top: -25px;
+                left: -25px;
+            }
+            .dot {
+                width: 10px;
+                height: 10px;
+            }
         }
     </style>
 </head>
@@ -413,6 +490,14 @@
         </div>
         <p style="margin-top: 20px; color: #8b949e;">Narxi: 150,000 so'm (Bir martalik)</p>
     </section>
+    <div class="orbital-container">
+        <div class="orbit orbit-1">
+            <div class="dot dot-1"></div>
+        </div>
+        <div class="orbit orbit-2">
+            <div class="dot dot-2"></div>
+        </div>
+    </div>
 
     <footer>
         <p>&copy; 2024 PYTHON CORE. Mentor: Xo'jabek Qilichev</p>
@@ -420,23 +505,19 @@
     </footer>
 
     <script>
-    // AOSni asosiy sozlamalar bilan ishga tushiramiz
     AOS.init({
         duration: 1000,
         once: false,
         mirror: true
     });
 
-    // Tepaga scroll bo'lganda animatsiyani "reset" qilish (qayta yuklash)
     let lastScrollTop = 0;
     window.addEventListener("scroll", function() {
         let st = window.pageYOffset || document.documentElement.scrollTop;
         
         if (st < lastScrollTop) {
-            // Agar tepaga scroll bo'layotgan bo'lsa
             const aosElements = document.querySelectorAll('.aos-animate');
             aosElements.forEach(el => {
-                // Element ekrandan chiqib ketsa, klassni olib tashlaymiz
                 const rect = el.getBoundingClientRect();
                 if (rect.top > window.innerHeight || rect.bottom < 0) {
                     el.classList.remove('aos-animate');
@@ -445,8 +526,7 @@
         }
         lastScrollTop = st <= 0 ? 0 : st;
     }, false);
-
-    // Loader uchun kod
+        
     window.addEventListener("load", function () {
         const loader = document.getElementById("loader");
         setTimeout(() => {
