@@ -421,10 +421,9 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1000, once: true });
+        AOS.init({ duration: 1000, once: false });
         window.addEventListener("load", function () {
-                const loader = document.getElementById("loader");
-                // Sayt to'liq yuklangandan keyin 500ms kutib loaderni yashiradi
+                const loader = document.getElementById("loader");=
                 setTimeout(() => {
                     loader.classList.add("loader-hidden");
                 }, 500);
